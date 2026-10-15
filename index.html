@@ -4,70 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelTools AI - Free Image Tools</title>
+    <title>PixelTools AI - Image Tools</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
-    <a class="logo" href="#">PixelTools <span>AI</span></a>
-    <span class="free-label">FREE ONLINE TOOLS</span>
+<header>
+    <a href="#" class="logo">PixelTools <span>AI</span></a>
 </header>
 
-<main class="container">
-    <section class="hero">
-        <h1>All Your Image Tools in One Place</h1>
-        <p>Convert images, compress photos and create PDFs easily.</p>
-    </section>
+<main>
+    <h1>Free Online Image Tools</h1>
+    <p class="subtitle">Convert, compress and create PDF from your photos.</p>
 
-    <section class="tool-card">
-        <h2>Choose Your Images</h2>
-        <p>Select one or multiple photos from your device.</p>
-
-        <label class="upload-area" for="imageInput">
+    <section class="card">
+        <label class="upload" for="imageInput">
             <span class="upload-icon">＋</span>
-            <strong>Click to select photos</strong>
-            <span>JPG, PNG, WEBP and other browser-supported images</span>
+            <strong>Choose Photos</strong>
+            <span>Select multiple images at once</span>
         </label>
 
-        <input
-            type="file"
-            id="imageInput"
-            accept="image/*"
-            multiple
-            hidden
-        >
+        <input id="imageInput" type="file" accept="image/*" multiple>
 
         <p id="fileInfo">No photos selected</p>
-
-        <div id="previewGrid" class="preview-grid"></div>
-
-        <div class="actions">
-            <button id="pdfBtn" class="btn primary">
-                Images to PDF
-            </button>
-
-            <button id="convertBtn" class="btn secondary">
-                Convert Image
-            </button>
-
-            <button id="compressBtn" class="btn secondary">
-                Compress Image
-            </button>
-
-            <button id="clearBtn" class="btn danger">
-                Clear Photos
-            </button>
-        </div>
+        <div id="previewGrid"></div>
 
         <div class="settings">
-            <label for="format">Output format</label>
+            <label for="format">Image format</label>
             <select id="format">
                 <option value="image/jpeg">JPG</option>
                 <option value="image/png">PNG</option>
             </select>
 
-            <label for="quality">Compression quality</label>
+            <label for="quality">Image quality</label>
             <select id="quality">
                 <option value="0.5">50%</option>
                 <option value="0.7">70%</option>
@@ -76,32 +45,21 @@
             </select>
         </div>
 
-        <p id="status" role="status" aria-live="polite">
-            Select your photos to get started.
-        </p>
-    </section>
-
-    <section class="features">
-        <h2>Simple, Fast and Easy</h2>
-        <div class="feature-grid">
-            <article>
-                <h3>Image to PDF</h3>
-                <p>Put multiple images into one PDF file.</p>
-            </article>
-            <article>
-                <h3>Image Converter</h3>
-                <p>Convert the selected photo to JPG or PNG.</p>
-            </article>
-            <article>
-                <h3>Image Compressor</h3>
-                <p>Reduce the file size of the selected photo.</p>
-            </article>
+        <div class="buttons">
+            <button id="pdfBtn">Images to PDF</button>
+            <button id="convertBtn">Convert Image</button>
+            <button id="compressBtn">Compress Image</button>
+            <button id="clearBtn">Clear Photos</button>
         </div>
+
+        <p id="status" aria-live="polite">Select photos to start.</p>
     </section>
 </main>
 
-<footer>
-    <p>© <span id="year"></span> PixelTools AI. All rights reserved.</p>
-</footer>
+<footer>© <span id="year"></span> PixelTools AI</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+```
