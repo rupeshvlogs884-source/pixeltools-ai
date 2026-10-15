@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online image compressor, image converter and image to PDF tool. Fast, simple and easy to use.">
+  <title>PixelTools AI - Free Online Image Tools</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="logo"><span>✦</span> PixelTools <b>AI</b></a>
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#how">How it works</a>
+    </nav>
+    <a href="#tools" class="nav-btn">Get Started ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="pill"><span class="dot"></span> SIMPLE · FAST · FREE</div>
+      <h1>Your images.<br><span>Perfected online.</span></h1>
+      <p>Compress images, convert formats and create PDFs in seconds. Simple tools, right in your browser.</p>
+      <a href="#tools" class="primary-btn">Explore free tools <span>→</span></a>
+      <div class="hero-note">🔒 Your images are processed in your browser.</div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-card art-left">▧ <small>Compress</small></div>
+        <div class="art-card art-center">✦<small>PixelTools AI</small></div>
+        <div class="art-card art-right">PDF<small>Convert</small></div>
+      </div>
+    </section>
+
+    <section class="tools-section" id="tools">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">THE TOOLKIT</div>
+          <h2>Everything you need.</h2>
+          <p>Choose a tool, upload an image and download your result.</p>
+        </div>
+        <span class="free-tag">3 FREE TOOLS</span>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card">
+          <div class="tool-icon purple">▧</div>
+          <h3>Image Compressor</h3>
+          <p>Reduce image file size while keeping good visual quality.</p>
+          <button class="text-btn" data-tool="compress">Use compressor ↓</button>
+        </article>
+        <article class="tool-card">
+          <div class="tool-icon blue">⇄</div>
+          <h3>Image Converter</h3>
+          <p>Convert images into JPG, PNG or WebP formats.</p>
+          <button class="text-btn" data-tool="convert">Convert image ↓</button>
+        </article>
+        <article class="tool-card">
+          <div class="tool-icon orange">PDF</div>
+          <h3>Image to PDF</h3>
+          <p>Turn your image into a downloadable PDF document.</p>
+          <button class="text-btn" data-tool="pdf">Create PDF ↓</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspace">
+      <div class="workspace-heading">
+        <div class="eyebrow">YOUR WORKSPACE</div>
+        <h2>Let's work on your image.</h2>
+        <p>Upload an image first, then choose what you want to do.</p>
+      </div>
+
+      <div class="upload-box" id="dropZone">
+        <input type="file" id="imageInput" accept="image/*" hidden>
+        <div class="upload-symbol">↑</div>
+        <h3>Drop your image here</h3>
+        <p>or click below to browse your device</p>
+        <button class="primary-btn" id="browseBtn" type="button">Choose image</button>
+        <small>Supports JPG, PNG, WebP and other browser-supported images</small>
+      </div>
+
+      <div class="editor" id="editor" hidden>
+        <div class="image-preview">
+          <img id="previewImage" alt="Selected image preview">
+          <div class="file-details">
+            <strong id="fileName">image.jpg</strong>
+            <span id="fileInfo">0 KB</span>
+          </div>
+          <button id="removeBtn" class="remove-btn" type="button">Remove image ×</button>
+        </div>
+
+        <div class="editor-controls">
+          <div class="control-block">
+            <label for="quality">Compression quality <span id="qualityValue">75%</span></label>
+            <input id="quality" type="range" min="10" max="100" value="75">
+            <div class="range-labels"><span>Smaller file</span><span>Better quality</span></div>
+          </div>
+
+          <div class="control-block">
+            <label for="format">Output image format</label>
+            <select id="format">
+              <option value="image/jpeg">JPG</option>
+              <option value="image/png">PNG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+            <small>JPG and WebP support quality compression. PNG is lossless.</small>
+          </div>
+
+          <div class="action-buttons">
+            <button class="primary-btn" id="compressBtn" type="button">Compress & Download</button>
+            <button class="secondary-btn" id="convertBtn" type="button">Convert & Download</button>
+            <button class="secondary-btn" id="pdfBtn" type="button">Download as PDF</button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section" id="how">
+      <div class="eyebrow">THREE SIMPLE STEPS</div>
+      <h2>Easy as 1, 2, 3.</h2>
+      <div class="steps">
+        <div><span>01</span><h3>Upload</h3><p>Choose an image from your device.</p></div>
+        <div><span>02</span><h3>Customize</h3><p>Pick a format or compression quality.</p></div>
+        <div><span>03</span><h3>Download</h3><p>Save the processed file to your device.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo"><span>✦</span> PixelTools <b>AI</b></a>
+    <p>Useful image tools. Made simple.</p>
+    <small>© <span id="year"></span> PixelTools AI</small>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
