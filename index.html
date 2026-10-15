@@ -2,64 +2,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelTools AI - Image Tools</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PixelTools AI - Free Online Image Tools</title>
+  <meta name="description" content="Convert images, compress photos, resize images and create PDFs with PixelTools AI.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
+
 <body>
 
-<header>
-    <a href="#" class="logo">PixelTools <span>AI</span></a>
+<header class="navbar">
+  <a class="logo" href="#">PixelTools <span>AI</span></a>
+  <span class="badge">FREE ONLINE TOOLS</span>
 </header>
 
-<main>
-    <h1>Free Online Image Tools</h1>
-    <p class="subtitle">Convert, compress and create PDF from your photos.</p>
+<main class="container">
 
-    <section class="card">
-        <label class="upload" for="imageInput">
-            <span class="upload-icon">＋</span>
-            <strong>Choose Photos</strong>
-            <span>Select multiple images at once</span>
-        </label>
+  <section class="hero">
+    <p class="eyebrow">YOUR ALL-IN-ONE TOOLKIT</p>
+    <h1>Powerful Tools.<br><span>Simple Results.</span></h1>
+    <p>Convert, compress, resize and edit your images in one place.</p>
 
-        <input id="imageInput" type="file" accept="image/*" multiple>
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Search tools..."
+      aria-label="Search tools"
+    >
+  </section>
 
-        <p id="fileInfo">No photos selected</p>
-        <div id="previewGrid"></div>
+  <section class="section">
+    <h2>Explore All Tools</h2>
 
-        <div class="settings">
-            <label for="format">Image format</label>
-            <select id="format">
-                <option value="image/jpeg">JPG</option>
-                <option value="image/png">PNG</option>
-            </select>
+    <div class="tools-grid" id="toolsGrid">
 
-            <label for="quality">Image quality</label>
-            <select id="quality">
-                <option value="0.5">50%</option>
-                <option value="0.7">70%</option>
-                <option value="0.8" selected>80%</option>
-                <option value="0.9">90%</option>
-            </select>
-        </div>
+      <button class="tool-card" data-tool="convert">
+        <span class="tool-icon">⇄</span>
+        <strong>Image Converter</strong>
+        <small>Convert JPG, PNG and WEBP</small>
+      </button>
 
-        <div class="buttons">
-            <button id="pdfBtn">Images to PDF</button>
-            <button id="convertBtn">Convert Image</button>
-            <button id="compressBtn">Compress Image</button>
-            <button id="clearBtn">Clear Photos</button>
-        </div>
+      <button class="tool-card" data-tool="compress">
+        <span class="tool-icon">⌁</span>
+        <strong>Image Compressor</strong>
+        <small>Reduce image file size</small>
+      </button>
 
-        <p id="status" aria-live="polite">Select photos to start.</p>
-    </section>
+      <button class="tool-card" data-tool="resize">
+        <span class="tool-icon">↗</span>
+        <strong>Image Resizer</strong>
+        <small>Change image dimensions</small>
+      </button>
+
+      <button class="tool-card" data-tool="crop">
+        <span class="tool-icon">▣</span>
+        <strong>Image Cropper</strong>
+        <small>Crop your images</small>
+      </button>
+
+      <button class="tool-card" data-tool="rotate">
+        <span class="tool-icon">⟳</span>
+        <strong>Rotate Image</strong>
+        <small>Rotate your photos</small>
+      </button>
+
+      <button class="tool-card" data-tool="flip">
+        <span class="tool-icon">⇋</span>
+        <strong>Flip Image</strong>
+        <small>Flip horizontally or vertically</small>
+      </button>
+
+      <button class="tool-card" data-tool="pdf">
+        <span class="tool-icon">PDF</span>
+        <strong>Images to PDF</strong>
+        <small>Combine images into a PDF</small>
+      </button>
+
+      <button class="tool-card" data-tool="merge">
+        <span class="tool-icon">⊞</span>
+        <strong>Merge PDFs</strong>
+        <small>Combine multiple PDFs</small>
+      </button>
+
+      <button class="tool-card" data-tool="split">
+        <span class="tool-icon">✂</span>
+        <strong>Split PDF</strong>
+        <small>Extract selected PDF pages</small>
+      </button>
+
+      <button class="tool-card" data-tool="png">
+        <span class="tool-icon">PNG</span>
+        <strong>PNG Converter</strong>
+        <small>Save images as PNG</small>
+      </button>
+
+      <button class="tool-card" data-tool="jpg">
+        <span class="tool-icon">JPG</span>
+        <strong>JPG Converter</strong>
+        <small>Save images as JPG</small>
+      </button>
+
+      <button class="tool-card" data-tool="webp">
+        <span class="tool-icon">W</span>
+        <strong>WEBP Converter</strong>
+        <small>Save images as WEBP</small>
+      </button>
+
+    </div>
+  </section>
+
+  <section class="workspace" id="workspace">
+
+    <div class="workspace-heading">
+      <div>
+        <p class="eyebrow">TOOL WORKSPACE</p>
+        <h2 id="toolTitle">Image Converter</h2>
+        <p id="toolDescription">Upload your images and select an output format.</p>
+      </div>
+
+      <button class="btn btn-outline" id="resetBtn" type="button">
+        Reset
+      </button>
+    </div>
+
+    <label class="upload-box" id="uploadBox" for="fileInput">
+      <span class="upload-icon">↑</span>
+      <strong>Click here to upload files</strong>
+      <span>Or drag and drop files here</span>
+      <small id="fileHint">Supported image formats: JPG, PNG, WEBP</small>
+
+      <input
+        id="fileInput"
+        type="file"
+        accept="image/*"
+        multiple
+      >
+    </label>
+
+    <div id="fileList" class="file-grid"></div>
+
+    <div class="settings-grid">
+
+      <div class="field" id="formatField">
+        <label for="outputFormat">Output Format</label>
+        <select id="outputFormat">
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPG</option>
+          <option value="image/webp">WEBP</option>
+        </select>
+      </div>
+
+      <div class="field" id="qualityField">
+        <label for="quality">Image Quality</label>
+        <select id="quality">
+          <option value="0.95">High Quality - 95%</option>
+          <option value="0.8" selected>Balanced - 80%</option>
+          <option value="0.6">Small File - 60%</option>
+          <option value="0.4">Extra Small - 40%</option>
+        </select>
+      </div>
+
+      <div class="field" id="widthField">
+        <label for="imageWidth">Width (px)</label>
+        <input id="imageWidth" type="number" min="1" max="12000" placeholder="1200">
+      </div>
+
+      <div class="field" id="heightField">
+        <label for="imageHeight">Height (px)</label>
+        <input id="imageHeight" type="number" min="1" max="12000" placeholder="800">
+      </div>
+
+      <div class="field" id="angleField">
+        <label for="angle">Rotation Angle</label>
+        <select id="angle">
+          <option value="90">90 Degrees</option>
+          <option value="180">180 Degrees</option>
+          <option value="270">270 Degrees</option>
+        </select>
+      </div>
+
+      <div class="field" id="flipField">
+        <label for="flipDirection">Flip Direction</label>
+        <select id="flipDirection">
+          <option value="horizontal">Horizontal</option>
+          <option value="vertical">Vertical</option>
+        </select>
+      </div>
+
+      <div class="field" id="cropField">
+        <label for="cropRatio">Crop Ratio</label>
+        <select id="cropRatio">
+          <option value="free">Free / Use Dimensions</option>
+          <option value="1:1">Square 1:1</option>
+          <option value="4:3">Landscape 4:3</option>
+          <option value="16:9">Widescreen 16:9</option>
+          <option value="3:4">Portrait 3:4</option>
+        </select>
+      </div>
+
+      <div class="field" id="rangeField">
+        <label for="pageRange">PDF Page Range</label>
+        <input id="pageRange" type="text" placeholder="1-3,5">
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="processBtn" type="button">
+        Process Files
+      </button>
+
+      <button class="btn btn-secondary" id="downloadAllBtn" type="button" disabled>
+        Download All
+      </button>
+    </div>
+
+    <div class="progress-track" id="progressTrack" hidden>
+      <div id="progressBar"></div>
+    </div>
+
+    <p id="status" role="status" aria-live="polite">
+      Select a tool and upload your files.
+    </p>
+
+    <div id="results" class="results-grid"></div>
+
+  </section>
+
+  <section class="how-section">
+    <h2>How PixelTools AI Works</h2>
+
+    <div class="steps-grid">
+      <article>
+        <span>01</span>
+        <h3>Select a Tool</h3>
+        <p>Choose the image or PDF tool you need.</p>
+      </article>
+
+      <article>
+        <span>02</span>
+        <h3>Upload Your Files</h3>
+        <p>Choose files and set your preferences.</p>
+      </article>
+
+      <article>
+        <span>03</span>
+        <h3>Download Results</h3>
+        <p>Process your files and save the output.</p>
+      </article>
+    </div>
+  </section>
+
 </main>
 
-<footer>© <span id="year"></span> PixelTools AI</footer>
+<footer class="footer">
+  <a class="logo" href="#">PixelTools <span>AI</span></a>
+  <p>Free online image and PDF tools.</p>
+  <p>Your files are processed in your browser by this page.</p>
+  <p>© 2026 PixelTools AI</p>
+</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
 ```
